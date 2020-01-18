@@ -1,0 +1,75 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>Bienvenido</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <div id="custom-overlay" [style.display]="splash ? 'flex': 'none'">
+    <div class="flb">
+      <div class="Aligner-item Aligner-item--top"></div>
+      <img class="animation-target" src="assets/idiomas.2.png">
+      <!-- <img class="animation-target" src="assets/icono.tres.svg"> -->
+      <div class="Aligner-item Aligner-item--bottom"></div>
+    </div>
+  </div>
+
+  <div class="divSpinner" *ngIf="loading">
+      <ion-spinner name="circles"></ion-spinner>
+  </div>
+  <form [formGroup]="validationsForm" (ngSubmit)="onSubmit(validationsForm.value)">
+  <ion-item>
+    <ion-label position="floating" color="medium">Correo</ion-label>
+    <ion-input type="text" formControlName="email" clear-input="true"></ion-input>
+    <!-- <div class="validation-errors">
+    </div> -->
+  </ion-item>
+      <ion-item>
+        <ion-label position="floating" color="medium">Contraseña</ion-label>
+        <ion-input type="password" formControlName="password" clear-input="true"></ion-input>
+      </ion-item>
+      <ion-list>
+        <ion-radio-group>
+
+          <ion-item>
+            <ion-label>Admin</ion-label>
+            <ion-radio slot="start" value="biff" (click)="cargarUsuario('admin')" ></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Invitado</ion-label>
+            <ion-radio slot="start" (click)="cargarUsuario('invitado')"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Usuario</ion-label>
+            <ion-radio slot="start" (click)="cargarUsuario('user')" ></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Anónimo</ion-label>
+            <ion-radio slot="start" (click)="cargarUsuario('anon')" ></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Tester</ion-label>
+            <ion-radio slot="start" (click)="cargarUsuario('test')" ></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+
+      <ion-button color="medium" expand="full" type="submit" [disabled]="!validationsForm.valid">Ingresar</ion-button>
+</form>
+<div class="validation-errors">
+  <ng-container *ngFor="let validation of validationMessages.password">
+    <div class="error-message" *ngIf="validationsForm.get('password').hasError(validation.type) && (validationsForm.get('password').dirty || validationsForm.get('password').touched)">
+      <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+    </div>
+  </ng-container>
+  <ng-container *ngFor="let validation of validationMessages.email">
+    <div class="error-message" *ngIf="validationsForm.get('email').hasError(validation.type) && (validationsForm.get('email').dirty || validationsForm.get('email').touched)">
+      <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+    </div>
+  </ng-container>
+</div>
+</ion-content>

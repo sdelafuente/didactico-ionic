@@ -1,0 +1,175 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" >
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Bienvenido</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <div class="" *ngIf="loading">
+      <ion-spinner name="circles"></ion-spinner>
+  </div> -->
+  <ion-fab vertical="top" horizontal="start">
+    <ion-fab-button>
+      <img [src]="srcCategoria" alt="">
+    </ion-fab-button>
+    <ion-fab-list side="bottom">
+      <ion-fab-button (click)="activarCategoria('animales')" >
+        <img src="assets/cat.png" alt="">
+      </ion-fab-button>
+      <ion-fab-button (click)="activarCategoria('colores')" >
+        <img src="assets/rgb.png" alt="">
+      </ion-fab-button>
+      <ion-fab-button (click)="activarCategoria('numeros')" >
+        <img src="assets/numeros.png" alt="">
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+  <ion-fab vertical="top" horizontal="end">
+    <ion-fab-button>
+      <img [src]="srcIdioma" alt="">
+    </ion-fab-button>
+    <ion-fab-list side="bottom">
+      <ion-fab-button (click)="activarIdioma('esp')" >
+        <img src="assets/flags/spain.png" alt="">
+      </ion-fab-button>
+      <ion-fab-button (click)="activarIdioma('ingles')" >
+        <img src="assets/flags/united-kingdom.png" alt="">
+      </ion-fab-button>
+      <ion-fab-button (click)="activarIdioma('portugues')" >
+        <img src="assets/flags/brazil.png" alt="">
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+  <div class="contenedor" *ngIf="esEsp && esAnimales">
+    <ion-button class="boton" color="primary" expand="full" (click)="activarSonido('perro-es');" >
+      <img src="assets/animales/dog.png" alt="">
+    </ion-button>
+    <ion-button class="boton" color="danger" expand="full"  (click)="activarSonido('gato-es');">
+      <img src="assets/animales/cat.png" alt="">
+    </ion-button>
+    <ion-button class="boton" color="success" expand="full"  (click)="activarSonido('gallina-es');">
+      <img src="assets/animales/chicken.png" alt="">
+    </ion-button>
+    <ion-button class="boton" color="warning" expand="full"  (click)="activarSonido('conejo-es');">
+      <img src="assets/animales/rabbit.png" alt="">
+    </ion-button>
+    <ion-button class="boton" color="light" expand="full" (click)="activarSonido('pato-es');">
+      <img src="assets/animales/duck.png" alt="">
+    </ion-button>
+  </div>
+  <div class="contenedor" *ngIf="esEsp && esColores">
+      <ion-button class="boton" color="primary" expand="full" (click)="activarSonido('azul-es');" >Azul</ion-button>
+      <ion-button class="boton" color="danger" expand="full"  (click)="activarSonido('rojo-es');">Rojo</ion-button>
+      <ion-button class="boton" color="success" expand="full"  (click)="activarSonido('verde-es');">Verde</ion-button>
+      <ion-button class="boton" color="warning" expand="full"  (click)="activarSonido('amarillo-es');">Amarillo</ion-button>
+      <ion-button class="boton" color="light" expand="full"  (click)="activarSonido('blanco-es');">Blanco</ion-button>
+  </div>
+  <div class="contenedor" *ngIf="esEsp && esNumeros">
+    <ion-button class="boton" color="primary" expand="full" (click)="activarSonido('uno-es');" >
+      <img src="assets/numeros/uno.png" alt="">
+    </ion-button>
+    <ion-button class="boton" color="danger" expand="full"  (click)="activarSonido('dos-es');">
+      <img src="assets/numeros/dos.png" alt="">
+    </ion-button>
+    <ion-button class="boton" color="success" expand="full"  (click)="activarSonido('tres-es');">
+      <img src="assets/numeros/tres.png" alt="">
+    </ion-button>
+    <ion-button class="boton" color="warning" expand="full"  (click)="activarSonido('cuatro-es');">
+      <img src="assets/numeros/cuatro.png" alt="">
+    </ion-button>
+    <ion-button class="boton" color="light" expand="full" (click)="activarSonido('cinco-es');">
+      <img src="assets/numeros/cinco.png" alt="">
+    </ion-button>
+  </div>
+
+  <div class="contenedor" *ngIf="esIngles && esAnimales">
+      <ion-button class="boton" color="primary" expand="full" (click)="activarSonido('perro-en');" >
+        <img src="assets/animales/dog.png" alt="">
+      </ion-button>
+      <ion-button class="boton" color="danger" expand="full"  (click)="activarSonido('gato-en');">
+        <img src="assets/animales/cat.png" alt="">
+      </ion-button>
+      <ion-button class="boton" color="success" expand="full"  (click)="activarSonido('gallina-en');">
+        <img src="assets/animales/chicken.png" alt="">
+      </ion-button>
+      <ion-button class="boton" color="warning" expand="full"  (click)="activarSonido('conejo-en');">
+        <img src="assets/animales/rabbit.png" alt="">
+      </ion-button>
+      <ion-button class="boton" color="light" expand="full" (click)="activarSonido('pato-en');">
+        <img src="assets/animales/duck.png" alt="">
+      </ion-button>
+  </div>
+  <div class="contenedor" *ngIf="esIngles && esColores">
+      <ion-button class="boton" color="primary" expand="full" (click)="activarSonido('azul-en');" >Azul</ion-button>
+      <ion-button class="boton" color="danger" expand="full"  (click)="activarSonido('rojo-en');">Rojo</ion-button>
+      <ion-button class="boton" color="success" expand="full"  (click)="activarSonido('verde-en');">Verde</ion-button>
+      <ion-button class="boton" color="warning" expand="full"  (click)="activarSonido('amarillo-en');">Amarillo</ion-button>
+      <ion-button class="boton" color="light" expand="full"  (click)="activarSonido('blanco-en');">Blanco</ion-button>
+  </div>
+  <div class="contenedor" *ngIf="esIngles && esNumeros">
+    <ion-button class="boton" color="primary" expand="full" (click)="activarSonido('uno-en');" >
+      <img src="assets/numeros/uno.png" alt="">
+    </ion-button>
+    <ion-button class="boton" color="danger" expand="full"  (click)="activarSonido('dos-en');">
+      <img src="assets/numeros/dos.png" alt="">
+    </ion-button>
+    <ion-button class="boton" color="success" expand="full"  (click)="activarSonido('tres-en');">
+      <img src="assets/numeros/tres.png" alt="">
+    </ion-button>
+    <ion-button class="boton" color="warning" expand="full"  (click)="activarSonido('cuatro-en');">
+      <img src="assets/numeros/cuatro.png" alt="">
+    </ion-button>
+    <ion-button class="boton" color="light" expand="full" (click)="activarSonido('cinco-en');">
+      <img src="assets/numeros/cinco.png" alt="">
+    </ion-button>
+  </div>
+
+  <div class="contenedor" *ngIf="esPortugues && esAnimales">
+      <ion-button class="boton" color="primary" expand="full" (click)="activarSonido('perro-pr');" >
+        <img src="assets/animales/dog.png" alt="">
+      </ion-button>
+      <ion-button class="boton" color="danger" expand="full"  (click)="activarSonido('gato-pr');">
+        <img src="assets/animales/cat.png" alt="">
+      </ion-button>
+      <ion-button class="boton" color="success" expand="full"  (click)="activarSonido('gallina-pr');">
+        <img src="assets/animales/chicken.png" alt="">
+      </ion-button>
+      <ion-button class="boton" color="warning" expand="full"  (click)="activarSonido('conejo-pr');">
+        <img src="assets/animales/rabbit.png" alt="">
+      </ion-button>
+      <ion-button class="boton" color="light" expand="full" (click)="activarSonido('pato-pr');">
+        <img src="assets/animales/duck.png" alt="">
+      </ion-button>
+  </div>
+  <div class="contenedor" *ngIf="esPortugues && esColores">
+    <ion-button class="boton" color="primary" expand="full" (click)="activarSonido('azul-pr');" >Azul</ion-button>
+    <ion-button class="boton" color="danger" expand="full"  (click)="activarSonido('rojo-pr');">Rojo</ion-button>
+    <ion-button class="boton" color="success" expand="full"  (click)="activarSonido('verde-pr');">Verde</ion-button>
+    <ion-button class="boton" color="warning" expand="full"  (click)="activarSonido('amarillo-pr');">Amarillo</ion-button>
+    <ion-button class="boton" color="light" expand="full" (click)="activarSonido('blanco-pr');">Blanco</ion-button>
+  </div>
+  <div class="contenedor" *ngIf="esPortugues && esNumeros">
+    <ion-button class="boton" color="primary" expand="full" (click)="activarSonido('uno-pr');" >
+      <img src="assets/numeros/uno.png" alt="">
+    </ion-button>
+    <ion-button class="boton" color="danger" expand="full"  (click)="activarSonido('dos-pr');">
+      <img src="assets/numeros/dos.png" alt="">
+    </ion-button>
+    <ion-button class="boton" color="success" expand="full"  (click)="activarSonido('tres-pr');">
+      <img src="assets/numeros/tres.png" alt="">
+    </ion-button>
+    <ion-button class="boton" color="warning" expand="full"  (click)="activarSonido('cuatro-pr');">
+      <img src="assets/numeros/cuatro.png" alt="">
+    </ion-button>
+    <ion-button class="boton" color="light" expand="full" (click)="activarSonido('cinco-pr');">
+      <img src="assets/numeros/cinco.png" alt="">
+    </ion-button>
+  </div>
+
+</ion-content>
